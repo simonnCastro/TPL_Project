@@ -1,12 +1,18 @@
 import javax.swing.*;
+import java.awt.*;
 
-public class Button extends JButton {
-    private JButton button;
+public class Button extends JPanel{
+    JPanel button;
 
-    public Button(String text){
-        initialize(text);
+
+    public Button(){
+        initialize();
     }
-    private void initialize(String text){
-        setText(text);
+    private void initialize(){
+        new JPanel();
+        setBackground(Color.cyan);
+
+        JLabel labelText = new JLabel("true");
+        add(labelText);
     }
 }

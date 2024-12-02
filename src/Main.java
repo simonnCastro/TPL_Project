@@ -10,7 +10,9 @@ public class Main {
         mainFrame.setSize(1008, 567);
         mainFrame.setLocationRelativeTo(null);
 
-        Button openFile = new Button("Open File");
+        Button openFile = new Button();
+        mainFrame.add(openFile);
+
 
     }
 
