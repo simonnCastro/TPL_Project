@@ -8,6 +8,9 @@ public class Main {
         mainFrame = new JFrame();
         mainFrame.setTitle("TPL-Project");
         mainFrame.setSize(1008, 567);
+        mainFrame.setLocationRelativeTo(null);
+
+        Button openFile = new Button("Open File");
 
     }
 
