@@ -6,6 +6,8 @@ public class Main {
         // Invoked on the event dispatching thread.
         // Do any initialization here.
         mainFrame = new JFrame();
+        mainFrame.setTitle("TPL-Project");
+        mainFrame.setSize(1008, 567);
 
     }
 
