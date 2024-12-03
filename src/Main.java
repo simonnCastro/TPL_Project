@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main {
     private JFrame mainFrame;
@@ -16,9 +18,9 @@ public class Main {
         mainFrame.setResizable(false);
 
         JPanel mainPanel = new JPanel(new BorderLayout());
-        JPanel p2 = new JPanel();
-        p2.setLayout(new BoxLayout(p2, BoxLayout.PAGE_AXIS));
-        JPanel p3 = new JPanel();
+        JPanel navigationPanel = new JPanel();
+        navigationPanel.setLayout(new BoxLayout(navigationPanel, BoxLayout.PAGE_AXIS));
+        JPanel bodyPanel = new JPanel();
 
         JButton b1 = new JButton("Open File");
         JButton b2 = new JButton("Lexical Analysis");
@@ -44,25 +46,76 @@ public class Main {
         b4.setAlignmentX(Component.CENTER_ALIGNMENT);
         b5.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        p2.setBackground(Color.blue);
-        p2.setPreferredSize(new Dimension(width/4, height));
-        p2.add(Box.createVerticalGlue());
-        p2.add(b1);
-        p2.add(Box.createVerticalGlue());
-        p2.add(b2);
-        p2.add(Box.createVerticalGlue());
-        p2.add(b3);
-        p2.add(Box.createVerticalGlue());
-        p2.add(b4);
-        p2.add(Box.createVerticalGlue());
-        p2.add(b5);
-        p2.add(Box.createVerticalGlue());
+        //b1.setEnabled(false);
+        b2.setEnabled(false);
+        b3.setEnabled(false);
+        b4.setEnabled(false);
+        b5.setEnabled(false);
 
-        p3.setBackground(Color.red);
-        p3.setPreferredSize(new Dimension(width, height));
+        b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("File opened!");
+                b1.setEnabled(false);
+                b2.setEnabled(true);
+                b5.setEnabled(true);
+            }
+        });
+        b2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Lexical analysis successful!");
+                b2.setEnabled(false);
+                b3.setEnabled(true);
+            }
+        });
+        b3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Syntax analysis successful!");
+                b3.setEnabled(false);
+                b4.setEnabled(true);
+            }
+        });
+        b4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Semantic analysis successful!");
+                b4.setEnabled(false);
+            }
+        });
+        b5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("File cleared!");
+                b1.setEnabled(true);
+                b2.setEnabled(false);
+                b3.setEnabled(false);
+                b4.setEnabled(false);
+                b5.setEnabled(false);
+            }
+        });
 
-        mainPanel.add(p2, BorderLayout.WEST);
-        mainPanel.add(p3, BorderLayout.CENTER);
+
+        navigationPanel.setBackground(Color.blue);
+        navigationPanel.setPreferredSize(new Dimension(width/4, height));
+        navigationPanel.add(Box.createVerticalGlue());
+        navigationPanel.add(b1);
+        navigationPanel.add(Box.createVerticalGlue());
+        navigationPanel.add(b2);
+        navigationPanel.add(Box.createVerticalGlue());
+        navigationPanel.add(b3);
+        navigationPanel.add(Box.createVerticalGlue());
+        navigationPanel.add(b4);
+        navigationPanel.add(Box.createVerticalGlue());
+        navigationPanel.add(b5);
+        navigationPanel.add(Box.createVerticalGlue());
+
+        bodyPanel.setBackground(Color.red);
+        bodyPanel.setPreferredSize(new Dimension(width, height));
+
+        mainPanel.add(navigationPanel, BorderLayout.WEST);
+        mainPanel.add(bodyPanel, BorderLayout.CENTER);
         mainFrame.add(mainPanel);
 
     }
