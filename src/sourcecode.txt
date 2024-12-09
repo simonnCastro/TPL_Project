@@ -1,1 +1,9 @@
-test
+BYT byte = 1;
+SHO short = 2;
+INT integer = 3;
+LON long = 4;
+FLO float = 1.1;
+DOU double = 1.2;
+BOO boolean = true;
+CHA character = 1;
+STR string = "string;
